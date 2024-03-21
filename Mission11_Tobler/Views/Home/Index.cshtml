@@ -1,4 +1,8 @@
-﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @addTagHelper *, Mission11_Tobler
 
 @model Mission11_Tobler.Models.ViewModels.ProjectListViewModels
@@ -9,7 +13,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Books</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
     <style>
         .card-container {
             padding: 1rem;
@@ -72,10 +75,5 @@
     </div>
 
     <div page-model="@Model.PaginationInfo" page-action="Index"></div>
-
-
-    <script src="~/lib/jquery/jquery.min.js"></script>
-    <script src="~/lib/popper.js/popper.min.js"></script>
-    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
