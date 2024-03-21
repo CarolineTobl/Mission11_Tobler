@@ -1,0 +1,81 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Mission11_Tobler
+
+@model Mission11_Tobler.Models.ViewModels.ProjectListViewModels
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+    <style>
+        .card-container {
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 18rem; /* You can adjust the width as needed */
+            margin: 0.5rem;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        }
+
+            .card:hover {
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            }
+
+        .card-title {
+            font-size: 1.75rem; /* 20px */
+            margin-bottom: 0.75rem;
+        }
+
+        .card-text {
+            color: #555;
+        }
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Our Book Collection</h1>
+    <div class="card-container">
+        @foreach (var book in Model.Books)
+        {
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@book.Title</h5>
+                    <p class="card-text">@book.Author</p>
+                    <p class="card-text">@book.Publisher</p>
+                    <p class="card-text">@book.Classification</p>
+                    <p class="card-text">@book.Isbn</p>
+                    <p class="card-text">Pages: @book.PageCount</p>
+                    <p class="card-text">@book.Category</p>
+                    <p class="card-text">Price: @String.Format("{0:C}", book.Price)</p>
+                    <!-- Add more book details here -->
+                </div>
+            </div>
+        }
+       
+    </div>
+
+    <div page-model="@Model.PaginationInfo" page-action="Index"></div>
+
+
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/popper.js/popper.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
